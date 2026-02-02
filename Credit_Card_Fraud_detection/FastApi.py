@@ -1,12 +1,18 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
+import os
 import pandas as pd
 import numpy as np
 
 # Load model & scaler
-model = joblib.load("fraud_model.pkl")
-scaler = joblib.load("scaler.pkl")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+MODEL_PATH = os.path.join(BASE_DIR, "fraud_model.pkl")
+SCALER_PATH = os.path.join(BASE_DIR, "scaler.pkl")
+
+model = joblib.load(MODEL_PATH)
+scaler = joblib.load(SCALER_PATH)
 
 # Initialize FastAPI
 app = FastAPI(

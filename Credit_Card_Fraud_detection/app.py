@@ -1,5 +1,6 @@
 import streamlit as st
 import joblib
+import os
 import pandas as pd
 
 # ----------------------------------
@@ -18,11 +19,17 @@ st.divider()
 # ----------------------------------
 # Load model & scaler safely
 # ----------------------------------
+# Get absolute path of current file (app.py)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+MODEL_PATH = os.path.join(BASE_DIR, "fraud_model.pkl")
+SCALER_PATH = os.path.join(BASE_DIR, "scaler.pkl")
+
 try:
-    model = joblib.load("fraud_model.pkl")
-    scaler = joblib.load("scaler.pkl")
+    model = joblib.load(MODEL_PATH)
+    scaler = joblib.load(SCALER_PATH)
 except Exception as e:
-    st.error(f" Failed to load model files: {e}")
+    st.error(f"Failed to load model files: {e}")
     st.stop()
 
 # ----------------------------------
