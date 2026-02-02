@@ -143,6 +143,10 @@ Apply threshold
    ↓
 Display result
 ```
+## 🌐 Live Demo (Streamlit Cloud)
+
+👉 https://machinelearningproject-fdc2wzfbqt7653larp4bny.streamlit.app/
+
 ---
 
 ## 🧠 Key ML Best Practices Followed
